@@ -1,0 +1,16 @@
+Project: Interactive Sales Data Analysis (Python)
+
+Developed a dynamic, user-driven data analysis tool in Python where users can input monthly sales data directly via the terminal.
+
+Leveraged Pandas for efficient data manipulation and Matplotlib for insightful visualizations.
+
+Key Highlights:
+
+Accepts custom monthly sales data from the user (Month + Product sales).
+
+Automatically calculates total revenue, average monthly sales, and identifies the best-performing month.
+
+Generates line and bar charts to clearly visualize sales trends and product performance.
+
+Demonstrates strong skills in data analysis, visualization, and user interaction programming, 
+showcasing the ability to transform raw input into meaningful business insights.
