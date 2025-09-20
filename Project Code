@@ -1,0 +1,73 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# -----------------------
+# 1. Take Input from User
+# -----------------------
+n = int(input("Enter number of months: "))
+
+months = []
+product_a = []
+product_b = []
+product_c = []
+
+for i in range(n):
+    print(f"\n--- Month {i+1} ---")
+    month = input("Enter month name: ")
+    a = int(input("Enter Product A sales: "))
+    b = int(input("Enter Product B sales: "))
+    c = int(input("Enter Product C sales: "))
+
+    months.append(month)
+    product_a.append(a)
+    product_b.append(b)
+    product_c.append(c)
+
+# -----------------------
+# 2. Create DataFrame
+# -----------------------
+data = {
+    "Month": months,
+    "Product_A_Sales": product_a,
+    "Product_B_Sales": product_b,
+    "Product_C_Sales": product_c,
+}
+df = pd.DataFrame(data)
+
+# Calculate total sales
+df["Total_Sales"] = df["Product_A_Sales"] + df["Product_B_Sales"] + df["Product_C_Sales"]
+
+# -----------------------
+# 3. Data Analysis
+# -----------------------
+print("\n=== Sales Data Summary ===")
+print(df)
+
+print("\nTotal Revenue:", df["Total_Sales"].sum())
+print("Average Monthly Sales:", df["Total_Sales"].mean())
+print("Best Month:", df.loc[df["Total_Sales"].idxmax(), "Month"])
+
+# -----------------------
+# 4. Visualization
+# -----------------------
+
+# Line Chart
+plt.figure(figsize=(8, 5))
+plt.plot(df["Month"], df["Product_A_Sales"], label="Product A", marker="o")
+plt.plot(df["Month"], df["Product_B_Sales"], label="Product B", marker="o")
+plt.plot(df["Month"], df["Product_C_Sales"], label="Product C", marker="o")
+plt.plot(df["Month"], df["Total_Sales"], label="Total Sales", linewidth=2, linestyle="--")
+plt.title("Monthly Sales Trend")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Bar Chart
+plt.figure(figsize=(6, 4))
+plt.bar(df["Month"], df["Total_Sales"], color="skyblue")
+plt.title("Total Monthly Sales")
+plt.xlabel("Month")
+plt.ylabel("Total Sales")
+plt.show()
